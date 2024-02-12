@@ -30,33 +30,32 @@
     <br><br>
     <table>
         <tr>
-            <td>Fornavn</td>
+            <td><label for="f_name">Fornavn</label> </td>
             <td><input type="text" id="f_name" name="f_name" onchange="validateFname()"></td>
             <td><span id = errorFname></span></td>
         </tr>
         <tr>
-            <td>Etternavn</td>
+            <td><label for="l_name">Etternavn</label> </td>
             <td><input type="text" id="l_name" name="l_name" onchange="validateLname()"></td>
             <td><span id="errorLname"></span></td>
         </tr>
         <tr>
-            <td>Telefonnr</td>
-            <td><input type="text" id="p_number" name="p_number"></td>
+            <td><label for="p_number">Telefonnr</label> </td>
+            <td><input type="text" id="p_number" name="p_number" onchange="validatePnumber()"></td>
             <td><span id="errorPnumber"></span></td>
         </tr>
         <tr>
-            <td>Epost</td>
+            <td><label for="email">Epost</label> </td>
             <td><input type="text" id="email" name="email" onchange="validateEmail()"></td>
             <td><span id="errorEmail"></span></td>
         </tr>
     </table>
 
     <button onclick="buyTicket()">Kjøp billett</button>
-    <span id="errorScheme"></span>
 
     <h2>Alle billetter</h2>
     <table>
-        <th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>
+        <tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>
         <tbody id="ticketInfo"></tbody>
     </table>
     <button onclick="deleteTickets()">Slett alle billettene</button>

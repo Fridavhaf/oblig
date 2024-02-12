@@ -47,6 +47,20 @@ function validateLname(){
         return lname = null;
     }
 }
+function validatePnumber(){
+    let inNumber = document.getElementById("p_number").value;
+    let pnumber = Number(inNumber);
+    if (isNaN(pnumber) || pnumber > 99999999 || pnumber < 10000000) {
+        document.getElementById("errorPnumber").innerHTML = "Skriv inn et gyldig telefonnummer";
+        document.getElementById("p_number").style.borderColor = "red";
+        return pnumber = null;
+    } else {
+        document.getElementById("errorPnumber").innerHTML = "";
+        document.getElementById("p_number").style.borderColor = "";
+        return pnumber;
+    }
+
+}
 //control of email with normal validation pattern for email addresses
 function validateEmail(){
     let validMail = "^[a-zA-Z0-9.!#$%'*+/=^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
@@ -56,8 +70,6 @@ function validateEmail(){
         document.getElementById("errorEmail").innerHTML ="";
         document.getElementById("email").style.borderColor = "";
         return inEmail;
-
-
     } else {
         document.getElementById("errorEmail").innerHTML = "skriv inn en gyldig e-post";
         document.getElementById("email").style.borderColor = "red";
@@ -70,6 +82,7 @@ function buyTicket() {
     let fname = validateFname();
     let nrTickets = validateAmount();
     let lname = validateLname();
+    let pnumber = validatePnumber();
 
     //control of movie input
     let movie = document.getElementById("movie").value;
@@ -81,19 +94,8 @@ function buyTicket() {
         document.getElementById("errorMovie").innerHTML = "";
     }
 
-    //control of phone number
-    let inNumber = document.getElementById("p_number").value;
-    let pnumber = Number(inNumber);
-    if (isNaN(pnumber) || pnumber > 99999999 || pnumber < 10000000) {
-        document.getElementById("errorPnumber").innerHTML = "Skriv inn et gyldig nummer";
-        document.getElementById("p_number").style.borderColor = "red";
-    } else {
-        document.getElementById("errorPnumber").innerHTML = "";
-        document.getElementById("p_number").style.borderColor = "";
-    }
-
-//declearing an
-    if (movie === "" || nrTickets === null ||
+// an object is instantiated and added to array if input is valid
+    if (movie === "" || nrTickets === null || pnumber === null ||
         fname === null || lname === null || email === null ) {
         document.getElementById("errorScheme").innerHTML = "feil";
         return false;
@@ -115,7 +117,7 @@ function buyTicket() {
                 "</td><td>" + i.fname + "</td><td>" + i.lname + "</td><td>" + i.pnumber +
                 "</td><td>" + i.email + "</td></tr>";
         }
-
+        //empty fields when ticket is added
         document.getElementById("movie").value = "";
         document.getElementById("amount").value = "";
         document.getElementById("f_name").value = "";
@@ -126,12 +128,12 @@ function buyTicket() {
 }
 function deleteTickets(){
     tickets.length=0;
-    ticketTable = document.getElementById("ticketInfo");
+    let ticketTable = document.getElementById("ticketInfo");
     ticketTable.innerHTML = "";
     for (let i of tickets) {
         ticketTable.innerHTML += "<tr><td>" + i.movie + "</td><td>" + i.nrTickets +
             "</td><td>" + i.fname + "</td><td>" + i.lname + "</td><td>" + i.pnumber +
             "</td><td>" + i.email + "</td></tr>";
     } // for loop adds nothing to table, because tickets array is empty
-
 }
+
