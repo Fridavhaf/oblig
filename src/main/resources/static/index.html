@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblig1</title>
+    <script type="application/javascript" src="script.js"></script>
+</head>
+<body>
+    <h1>Bestilling av kinobiletter</h1>
+
+
+    <label for="movie">Velg film:</label>
+    <select name = "movie" id = "movie">
+        <option value="" selected disabled>Velg film her</option>
+        <option value="Ladybird">Ladybird</option>
+        <option value="Kung Fu Panda">Kung Fu Panda</option>
+        <option value="Poor Thing">Poor Thing</option>
+        <option value="Shrek">Shrek</option>
+    </select>
+    <span id = "errorMovie"></span>
+    <br><br>
+
+    <div>
+        <label for="amount">Antall</label>
+        <input type="text" id="amount" onchange="validateAmount()" required style="width: 40px">
+        <span id = "errorAmount"></span>
+    </div>
+
+
+    <br><br>
+    <table>
+        <tr>
+            <td>Fornavn</td>
+            <td><input type="text" id="f_name" name="f_name" onchange="validateFname()"></td>
+            <td><span id = errorFname></span></td>
+        </tr>
+        <tr>
+            <td>Etternavn</td>
+            <td><input type="text" id="l_name" name="l_name" onchange="validateLname()"></td>
+            <td><span id="errorLname"></span></td>
+        </tr>
+        <tr>
+            <td>Telefonnr</td>
+            <td><input type="text" id="p_number" name="p_number"></td>
+            <td><span id="errorPnumber"></span></td>
+        </tr>
+        <tr>
+            <td>Epost</td>
+            <td><input type="text" id="email" name="email" onchange="validateEmail()"></td>
+            <td><span id="errorEmail"></span></td>
+        </tr>
+    </table>
+
+    <button onclick="buyTicket()">Kjøp billett</button>
+    <span id="errorScheme"></span>
+
+    <h2>Alle billetter</h2>
+    <table>
+        <th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th>
+        <tbody id="ticketInfo"></tbody>
+    </table>
+    <button onclick="deleteTickets()">Slett alle billettene</button>
+</body>
+</html>
