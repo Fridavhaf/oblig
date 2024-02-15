@@ -9,9 +9,9 @@ The functions validating the input are different
 depending on the attributes that are going into the array.
 
 Some rules:
-international letters æ, ø, å, ä, ü, ë etc. is allowed for name
-phone number is with eight digits (standard norwegian without the +47),
-simple regex for mail that allows a lot, but not all special signs like +%&$'^ etc.
+International letters æ, ø, å, ä, ü, ë etc. is allowed for name.
+Phone number is with eight digits (standard norwegian without the +47).
+Simple regex for mail that allows a lot, but not all special signs like +%&$'^ etc.
 
 You have to insert something in the input fields before buying a ticket, or an error occurs.
 You will also get error if the input does not meet the criteria.
