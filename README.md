@@ -9,7 +9,7 @@ The functions validating the input are different
 depending on the attributes that are going into the array.
 
 Some rules:
-International letters æ, ø, å, ä, ü, ë etc. is allowed for name.
+International letters æøå, äüë, 陳大文, ộđồ, 食べ物, 음식  etc. is allowed for name.
 Phone number is with eight digits (standard norwegian without the +47).
 Simple regex for mail that allows a lot, but not all special signs like +%&$'^ etc.
 
