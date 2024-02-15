@@ -1,7 +1,7 @@
 
 const tickets = [];
 
-/* validateFname() and validateLname() checks for empty strings and whitespace inputs.
+/* the functions validateFname() and validateLname() checks for empty strings and whitespace inputs.
     Numbers and signs not allowed */
 function validateAmount(){
     //control of tickets input
@@ -20,7 +20,8 @@ function validateAmount(){
     }
 }
 function validateFname(){
-    let validName = "^[A-Za-z]+$";
+    //Regex from https://stackoverflow.com/questions/2385701/regular-expression-for-first-and-last-name
+    let validName = /^[\p{L}'][ \p{L}'-]*[\p{L}]$/u;
     let fname = document.getElementById("f_name").value;
     if (fname.match(validName)){
         document.getElementById("errorFname").innerHTML = "";
@@ -34,7 +35,7 @@ function validateFname(){
     }
 }
 function validateLname(){
-    let validName = "^[A-Za-z]+$";
+    let validName = /^[\p{L}'][ \p{L}'-]*[\p{L}]$/u;
     let lname = document.getElementById("l_name").value;
     if (lname.match(validName)){
         document.getElementById("errorLname").innerHTML = "";
@@ -63,7 +64,8 @@ function validatePnumber(){
 }
 //control of email with normal validation pattern for email addresses
 function validateEmail(){
-    let validMail = "^[a-zA-Z0-9.!#$%'*+/=^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+    //Simple regex for email copied from https://regexr.com/3e48o
+    let validMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     let inEmail = document.getElementById("email").value;
 
     if (inEmail.match(validMail)) {
@@ -97,8 +99,6 @@ function buyTicket() {
 // an object is instantiated and added to array if input is valid
     if (movie === "" || nrTickets === null || pnumber === null ||
         fname === null || lname === null || email === null ) {
-        document.getElementById("errorScheme").innerHTML = "feil";
-        return false;
     } else {
         const ticket = {
             movie: movie,
@@ -128,10 +128,10 @@ function buyTicket() {
 }
 function deleteTickets(){
     tickets.length=0;
-    let ticketTable = document.getElementById("ticketInfo");
-    ticketTable.innerHTML = "";
+    let ticketTableRemove = document.getElementById("ticketInfo");
+    ticketTableRemove.innerHTML = "";
     for (let i of tickets) {
-        ticketTable.innerHTML += "<tr><td>" + i.movie + "</td><td>" + i.nrTickets +
+        ticketTableRemove.innerHTML += "<tr><td>" + i.movie + "</td><td>" + i.nrTickets +
             "</td><td>" + i.fname + "</td><td>" + i.lname + "</td><td>" + i.pnumber +
             "</td><td>" + i.email + "</td></tr>";
     } // for loop adds nothing to table, because tickets array is empty
